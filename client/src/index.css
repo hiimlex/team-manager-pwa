@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    @apply bg-bg text-text font-sans;
+    min-height: 100dvh;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-surface;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-text-dim;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-surface border border-border rounded-xl p-4;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-hover;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-text-muted hover:bg-hover hover:text-text border border-border;
+  }
+
+  .btn-danger {
+    @apply btn bg-transparent text-primary hover:bg-primary hover:text-white border border-primary;
+  }
+
+  .input {
+    @apply w-full bg-hover border border-border rounded-lg px-3 py-2 text-sm text-text placeholder:text-text-dim outline-none focus:border-primary transition-colors;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
+  }
+
+  .badge-red {
+    @apply badge bg-primary/20 text-primary;
+  }
+  .badge-green {
+    @apply badge bg-success/20 text-green-400;
+  }
+  .badge-gray {
+    @apply badge bg-hover text-text-muted;
+  }
+}
+
+/* Score bump animation */
+@keyframes scoreBump {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.35);
+    color: #e30613;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.score-bump {
+  animation: scoreBump 0.35s ease-out;
+}

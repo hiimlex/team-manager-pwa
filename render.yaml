@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: racha-volei-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3333
+      - key: MONGODB_URI
+        sync: false # Adicionar no painel do Render — URL do MongoDB Atlas
+      - key: JWT_SECRET
+        sync: false # Gerar um segredo forte em produção
+      - key: CORS_ORIGIN
+        sync: false # URL(s) do frontend no Vercel, separadas por vírgula; aceita curinga, ex: https://racha-volei.vercel.app,https://racha-volei-*.vercel.app
+      - key: CLOUDINARY_CLOUD_NAME
+        value: dks9iax3n
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
